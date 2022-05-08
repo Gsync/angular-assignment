@@ -14,6 +14,12 @@ const selectFeature = createFeatureSelector<State>('coffee')
 
 export const selectCoffeeList = createSelector(selectFeature, state => state.coffeeList)
 
+export const getCoffeeDetails = (id: string) => createSelector(
+    selectFeature, state => {
+        return state.coffeeList.find(coffee => coffee.uid === id)
+    }
+)
+
 export const coffeeReducer = createReducer(
     initialState,
     on(setCoffeeList, (state, action) => ({

@@ -15,11 +15,15 @@ import { coffeeReducer } from './state/coffee.reducer'
 import { CoffeeEffects } from './state/coffee.effects';
 import { CoffeeListComponent } from './coffee-list/coffee-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CoffeeDetailsComponent } from './coffee-details/coffee-details.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CoffeeListComponent
+    CoffeeListComponent,
+    CoffeeDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +33,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatToolbarModule,
     MatTableModule,
     MatPaginatorModule,
+    MatCardModule,
+    MatButtonModule,
     StoreModule.forRoot({ coffee: coffeeReducer }, {}),
     EffectsModule.forRoot([CoffeeEffects]),
     StoreDevtoolsModule.instrument({

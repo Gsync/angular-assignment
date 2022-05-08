@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CoffeeDetailsComponent } from './coffee-details/coffee-details.component';
 import { CoffeeListComponent } from './coffee-list/coffee-list.component';
 
 const routes: Routes = [
@@ -11,6 +12,10 @@ const routes: Routes = [
         component: CoffeeListComponent,
       },
       {
+        path: 'coffees/:coffeeId',
+        component: CoffeeDetailsComponent
+      },
+      {
         path: '',
         redirectTo: 'coffees',
         pathMatch: 'full'
@@ -19,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'coffees'
   }
 ];
 

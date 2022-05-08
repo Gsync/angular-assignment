@@ -1,0 +1,39 @@
+<div class="back-btn">
+    <button mat-stroked-button (click)="goBack()"><span>&#8592;</span> Back</button>
+</div>
+<mat-card *ngIf="(coffeeDetails$ | async) as coffee">
+    <mat-card-title>{{ coffee.blend_name }}</mat-card-title>
+    <mat-card-subtitle>{{ coffee.origin }}</mat-card-subtitle>
+    <mat-card-content>
+        <table>
+            <tr>
+                <td>Blend Name:</td>
+                <td>{{coffee.blend_name}}</td>
+            </tr>
+            <tr>
+                <td>Origin:</td>
+                <td>{{coffee.origin}}</td>
+            </tr>
+            <tr>
+                <td>Variety:</td>
+                <td>{{coffee.variety}}</td>
+            </tr>
+            <tr>
+                <td>Intensifier:</td>
+                <td> {{coffee.intensifier}}</td>
+            </tr>
+            <tr>
+                <td>Notes:</td>
+                <td>Notes: {{coffee.notes}}</td>
+            </tr>
+        </table>
+        <!-- <table>
+            <div *ngFor="let detail of coffee | keyvalue">
+                <tr>
+                    <td>{{detail.key}}</td>
+                    <td>{{detail.value}}</td>
+                </tr>
+            </div>
+        </table> -->
+    </mat-card-content>
+</mat-card>

@@ -6,6 +6,7 @@ import { map, Observable } from 'rxjs';
 import { Coffee } from '../coffee.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-coffee-list',
@@ -21,7 +22,11 @@ export class CoffeeListComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private store: Store<fromCoffee.State>, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private store: Store<fromCoffee.State>,
+    private cdr: ChangeDetectorRef,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.coffeeList$ = this.store.select(fromCoffee.selectCoffeeList).pipe(
@@ -32,13 +37,16 @@ export class CoffeeListComponent implements OnInit, AfterViewInit {
         return data;
       })
     );
-    // this.coffeeDataSource.connect() = this.coffeeList$;
     this.store.dispatch(coffeeActions.fetchCoffeeList())
   }
 
   ngAfterViewInit(): void {
     this.coffeeDataSource.paginator = this.paginator;
     this.cdr.detectChanges();
+  }
+
+  goToCoffeeDetails(coffeeId: string) {
+    this.router.navigateByUrl(`/coffees/${coffeeId}`);
   }
 
 }
