@@ -10,9 +10,9 @@ const initialState: State = {
     coffeeList: []
 }
 
-const selectFeature = createFeatureSelector<State>('coffeeList')
+const selectFeature = createFeatureSelector<State>('coffee')
 
-const selectCoffeeList = createSelector(selectFeature, state => state.coffeeList)
+export const selectCoffeeList = createSelector(selectFeature, state => state.coffeeList)
 
 export const coffeeReducer = createReducer(
     initialState,

@@ -1,0 +1,44 @@
+<div *ngIf="coffeeList$ | async">
+    <table mat-table [dataSource]="coffeeDataSource" class="mat-elevation-z8">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Blend Name Column -->
+        <ng-container matColumnDef="blend_name">
+            <th mat-header-cell *matHeaderCellDef> Blend Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.blend_name}} </td>
+        </ng-container>
+
+        <!-- Intensifier Column -->
+        <ng-container matColumnDef="intensifier">
+            <th mat-header-cell *matHeaderCellDef> Intensifier </th>
+            <td mat-cell *matCellDef="let element"> {{element.intensifier}} </td>
+        </ng-container>
+
+        <!-- Origin Column -->
+        <ng-container matColumnDef="origin">
+            <th mat-header-cell *matHeaderCellDef> Origin </th>
+            <td mat-cell *matCellDef="let element"> {{element.origin}} </td>
+        </ng-container>
+
+        <!-- Variety Column -->
+        <ng-container matColumnDef="variety">
+            <th mat-header-cell *matHeaderCellDef> Variety </th>
+            <td style="margin-right: '10px';" mat-cell *matCellDef="let element"> {{element.variety}} </td>
+        </ng-container>
+
+        <!-- Origin Column -->
+        <ng-container matColumnDef="notes">
+            <th mat-header-cell *matHeaderCellDef> Notes </th>
+            <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator showFirstLastButtons [pageSize]="10" [pageSizeOptions]="[10, 20, 30]"></mat-paginator>
+</div>
