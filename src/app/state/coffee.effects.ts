@@ -27,16 +27,16 @@ export class CoffeeEffects {
         ofType(CoffeeActions.getCoffeeDetails),
         withLatestFrom(this.store.select(selectCoffeeList), this.store.select(selectCoffeeDetails)),
         switchMap(([action, coffeeList, selectedCoffee]) => {
-            if (selectedCoffee.uid === action.coffeeId) EMPTY
-            if (coffeeList.length) this.store.select(selectCoffeeList).pipe(
-                map(
-                    coffeeList => CoffeeActions.setCoffeeDetails(
+            if (selectedCoffee?.uid === action?.coffeeId) return EMPTY
+            if (coffeeList.length) {
+                return this.store.select(selectCoffeeList).pipe(map(coffeeList => {
+                    return CoffeeActions.setCoffeeDetails(
                         {
                             currentCoffee: coffeeList.filter((c: Coffee) => c.uid === action.coffeeId)[0]
                         }
                     )
-                )
-            )
+                }))
+            }
             return this.dataService.fetchCoffeeList()
                 .pipe(
                     map(coffeeList => (
