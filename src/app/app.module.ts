@@ -18,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { CoffeeDetailsComponent } from './coffee-details/coffee-details.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatPaginatorModule,
     MatCardModule,
     MatButtonModule,
+    FlexLayoutModule,
     StoreModule.forRoot({ coffee: coffeeReducer }, {}),
     EffectsModule.forRoot([CoffeeEffects]),
     StoreDevtoolsModule.instrument({
