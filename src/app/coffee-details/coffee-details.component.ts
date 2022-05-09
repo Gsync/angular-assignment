@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { EMPTY, Observable } from 'rxjs';
 import { Coffee } from '../coffee.model';
 import * as fromCoffee from "../state/coffee.reducer";
+import * as coffeeActions from "../state/coffee.actions";
 
 @Component({
   selector: 'app-coffee-details',
@@ -22,7 +23,8 @@ export class CoffeeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const coffeeId = this.route.snapshot.params['coffeeId'];
-    this.coffeeDetails$ = this.store.select(fromCoffee.getCoffeeDetails(coffeeId));
+    this.coffeeDetails$ = this.store.select(fromCoffee.selectCoffeeDetails);
+    this.store.dispatch(coffeeActions.getCoffeeDetails({ coffeeId }));
   }
 
   goBack() {
